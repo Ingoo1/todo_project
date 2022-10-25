@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/scss/main.css" />
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <title>ToDoList</title>
+  </head>
+  <body>
+    <main class="main">
+      <section class="todo">
+        <header class="todo__header">
+          <h1 class="todo__title">ToDo List</h1>
+        </header>
+        <form class="todo__form">
+          <input
+            type="text"
+            class="todo__input"
+            placeholder="Enter your text here"
+          />
+          <button class="todo__btn">Add</button>
+        </form>
+        <ul class="todo__list list">
+          <!-- <li class="list__item item">
+            <button class="item__circle js_complited"></button>
+            <p class="item__text">Some textSome 1</p>
+            <button class="item__cross js_trash"></button>
+          </li>
+          <li class="list__item item">
+            <button class="item__circle js_complited"></button>
+            <p class="item__text">Some textSome 2</p>
+            <button class="item__cross js_trash"></button>
+          </li>
+          <li class="list__item item">
+            <button class="item__circle js_complited"></button>
+            <p class="item__text">Some textSome 3</p>
+            <button class="item__cross js_trash"></button>
+          </li> -->
+        </ul>
+        <footer class="todo__footer footer">
+          <span class="footer__item"
+            >Items&nbsp;left:&nbsp;<span class="js_items-left">X</span></span
+          >
+          <div class="footer__wrap">
+            <button
+              id="all"
+              class="footer__item footer__js-btn footer__item--hover js-items-all active"
+            >
+              All
+            </button>
+            <button
+              id="active"
+              class="footer__item footer__js-btn footer__item--hover js-items-active"
+            >
+              Active
+            </button>
+            <button
+              id="complited"
+              class="footer__item footer__js-btn footer__item--hover js-items-complited"
+            >
+              Complited
+            </button>
+          </div>
+          <button
+            class="footer__item footer__item--hover-red js-complited-clear"
+          >
+            Clear complited
+          </button>
+        </footer>
+      </section>
+    </main>
+
+    <script defer src="/js/main.js"></script>
+  </body>
+</html>

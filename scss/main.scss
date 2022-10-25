@@ -1,0 +1,235 @@
+@import './reset.scss';
+@import './fonts.scss';
+
+
+$main-color: #01344A;
+$secondary-color: #036D8C;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: url(../img/anastasia-taioglou-medium.webp) top center / cover no-repeat fixed, rgba(0, 0, 0, 0.5) 30vh;
+    color: #ccc;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 3rem 1.5rem;
+    line-height: 1.2;
+}
+
+.todo {
+    padding: 3rem;
+    // background: linear-gradient(281deg, #FFF6E5 0%, #FEFEF3 100%);
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 8px 14px $main-color;
+    color: $main-color;
+    font-size: 1.6rem;
+    width: 100%;
+    max-width: 60rem;
+
+    &__header {
+        margin-bottom: 2rem;
+    }
+
+    &__form {
+        display: flex;
+        margin-bottom: 4rem;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: calc(4rem + 2vw);
+        font-weight: 700;
+        letter-spacing: 1px;
+        background: linear-gradient(281deg, $main-color 0%, $secondary-color 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        // animation: bg-animation 0.5s infinite ease;
+    }
+
+    &__input,
+    &__btn {
+        outline-color: $main-color;
+        border: 1px solid $secondary-color;
+        border-radius: 5px;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 0.5rem;
+        outline-color: $main-color;
+        text-overflow: ellipsis;
+        margin-right: 0.5rem;
+        color: $main-color;
+    }
+
+    &__btn {
+        color: #fff;
+        background-color: $secondary-color;
+        transition: background-color 0.2s ease-in-out;
+        cursor: pointer;
+        border: none;
+        min-width: 6rem;
+
+        &:hover {
+            background-color: $main-color;
+        }
+    }
+
+    .list {
+        margin-bottom: 4rem;
+        min-height: 100px;
+        transition: all 2s linear;
+    }
+
+    .item {
+        position: relative;
+        padding: 0rem 3rem 2rem;
+        border-bottom: 3px dotted $main-color;
+        line-height: 1.4;
+        transition: all 1s ease;
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        &__circle,
+        &__cross {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+
+        }
+
+        &__circle {
+            border: 1px solid $main-color;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+        }
+
+        &__cross {
+            top: 0;
+            right: 0;
+
+            &::before,
+            &::after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 2px;
+                background-color: $secondary-color;
+                top: 50%;
+                left: 50%;
+                transition: all 0.3s ease-in-out;
+            }
+
+            &::before {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &::after {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+
+            &:hover::after,
+            &:hover::before {
+                background-color: tomato;
+            }
+
+            &:active::after {
+                transform: translate(-50%, -50%) rotate(-40deg);
+
+            }
+
+            &:active::before {
+                transform: translate(-50%, -50%) rotate(40deg);
+
+            }
+        }
+
+        &--completed {
+            text-decoration: line-through 0.2rem $secondary-color;
+            color: rgb(170, 170, 170);
+            opacity: 0.7;
+
+            .item__circle {
+                &::before {
+                    position: absolute;
+                    content: '';
+                    width: 70%;
+                    height: 30%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                    transition: all 0.3s ease-in-out;
+                    border-bottom: 2px solid $secondary-color;
+                    border-left: 2px solid $secondary-color;
+                }
+            }
+        }
+
+        &--remove {
+            transform: scale(0.7);
+            opacity: 0;
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        font-size: 1.4rem;
+
+        &__item {
+            padding: 0.2rem 0.8rem;
+            font-size: 1rem;
+            border: 1px solid transparent;
+            background: none;
+
+            &--hover {
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            &--hover-red {
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    border-radius: 3px;
+                    color: tomato;
+                    border: 1px solid tomato;
+                }
+
+                &:active {
+                    background-color: tomato;
+                    color: #fff;
+                }
+            }
+        }
+
+        &__item.active {
+            border-radius: 3px;
+            border: 1px solid $main-color;
+            text-decoration: none;
+        }
+    }
+
+}

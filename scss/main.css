@@ -1,0 +1,279 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* roboto-regular - latin */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(""), url("../fonts/roboto-v30-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v30-latin-regular.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local(""), url("../fonts/roboto-v30-latin-700.woff2") format("woff2"), url("../fonts/roboto-v30-latin-700.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: url(../img/anastasia-taioglou-medium.webp) top center/cover no-repeat fixed, rgba(0, 0, 0, 0.5) 30vh;
+  color: #ccc;
+  font-family: "Roboto", sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+  line-height: 1.2;
+}
+
+.todo {
+  padding: 3rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 8px 14px #01344A;
+  color: #01344A;
+  font-size: 1.6rem;
+  width: 100%;
+  max-width: 60rem;
+}
+.todo__header {
+  margin-bottom: 2rem;
+}
+.todo__form {
+  display: flex;
+  margin-bottom: 4rem;
+}
+.todo__title {
+  text-align: center;
+  font-size: calc(4rem + 2vw);
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(281deg, #01344A 0%, #036D8C 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.todo__input, .todo__btn {
+  outline-color: #01344A;
+  border: 1px solid #036D8C;
+  border-radius: 5px;
+}
+.todo__input {
+  width: 100%;
+  padding: 0.5rem;
+  outline-color: #01344A;
+  text-overflow: ellipsis;
+  margin-right: 0.5rem;
+  color: #01344A;
+}
+.todo__btn {
+  color: #fff;
+  background-color: #036D8C;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  min-width: 6rem;
+}
+.todo__btn:hover {
+  background-color: #01344A;
+}
+.todo .list {
+  margin-bottom: 4rem;
+  min-height: 100px;
+  transition: all 2s linear;
+}
+.todo .item {
+  position: relative;
+  padding: 0rem 3rem 2rem;
+  border-bottom: 3px dotted #01344A;
+  line-height: 1.4;
+  transition: all 1s ease;
+}
+.todo .item:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.todo .item__circle, .todo .item__cross {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.todo .item__circle {
+  border: 1px solid #01344A;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+}
+.todo .item__cross {
+  top: 0;
+  right: 0;
+}
+.todo .item__cross::before, .todo .item__cross::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #036D8C;
+  top: 50%;
+  left: 50%;
+  transition: all 0.3s ease-in-out;
+}
+.todo .item__cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.todo .item__cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.todo .item__cross:hover::after, .todo .item__cross:hover::before {
+  background-color: tomato;
+}
+.todo .item__cross:active::after {
+  transform: translate(-50%, -50%) rotate(-40deg);
+}
+.todo .item__cross:active::before {
+  transform: translate(-50%, -50%) rotate(40deg);
+}
+.todo .item--completed {
+  text-decoration: line-through 0.2rem #036D8C;
+  color: rgb(170, 170, 170);
+  opacity: 0.7;
+}
+.todo .item--completed .item__circle::before {
+  position: absolute;
+  content: "";
+  width: 70%;
+  height: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid #036D8C;
+  border-left: 2px solid #036D8C;
+}
+.todo .item--remove {
+  transform: scale(0.7);
+  opacity: 0;
+}
+.todo .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  font-size: 1.4rem;
+}
+.todo .footer__item {
+  padding: 0.2rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  background: none;
+}
+.todo .footer__item--hover {
+  cursor: pointer;
+}
+.todo .footer__item--hover:hover {
+  text-decoration: underline;
+}
+.todo .footer__item--hover-red {
+  transition: all 0.2s ease-in-out;
+}
+.todo .footer__item--hover-red:hover {
+  cursor: pointer;
+  border-radius: 3px;
+  color: tomato;
+  border: 1px solid tomato;
+}
+.todo .footer__item--hover-red:active {
+  background-color: tomato;
+  color: #fff;
+}
+.todo .footer__item.active {
+  border-radius: 3px;
+  border: 1px solid #01344A;
+  text-decoration: none;
+}/*# sourceMappingURL=main.css.map */
